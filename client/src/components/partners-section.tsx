@@ -1,30 +1,29 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 export function PartnersSection() {
   const partners = [
     {
-      name: "Green Solutions Inc",
-      logo: "/src/images/partners/partner1.png",
+      name: "Vidacity",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner1.png",
     },
     {
-      name: "EcoInnovate",
-      logo: "/src/images/partners/partner2.png",
+      name: "City Sprouts",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner2.png",
     },
     {
-      name: "Sustainable Future",
-      logo: "/src/images/partners/partner3.png",
+      name: "NTU Entrepreneurship Academy",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner3.png",
     },
     {
-      name: "BioTech Partners",
-      logo: "/src/images/partners/partner4.png",
+      name: "Revital",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner4.png",
+    },
+    {
+      name: "Nutrition Technologies",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner4.png",
+    },    {
+      name: "IDSG",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner4.png",
     },
   ];
 
@@ -45,34 +44,22 @@ export function PartnersSection() {
           </p>
         </motion.div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-5xl mx-auto"
-        >
-          <CarouselContent>
-            {partners.map((partner, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="aspect-square relative rounded-lg overflow-hidden mb-4">
-                      <img
-                        src={partner.logo}
-                        alt={partner.name}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <h3 className="text-lg font-semibold text-center">{partner.name}</h3>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
+        <div className="relative overflow-hidden">
+          <div className="flex animate-scroll">
+            {[...partners, ...partners].map((partner, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-[200px] mx-8"
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+          </div>
+        </div>
       </div>
     </section>
   );
