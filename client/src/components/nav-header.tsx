@@ -17,7 +17,7 @@ export function NavHeader() {
     <header className="fixed w-full bg-background/95 backdrop-blur z-50 border-b">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2">
-          <img src="/src/images/logo.png" alt="Bugboom Logo" className="h-8 w-auto" />
+          <img src="https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/bugboomlogo.png" alt="Bugboom Logo" className="h-8 w-auto" />
           <span className="text-2xl font-bold text-primary">Bugboom</span>
         </a>
         
