@@ -6,15 +6,23 @@ export function TeamSection() {
   const team = [
     {
       name: "Vasanth Sreeram",
-      role: "Founder",
-      image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5",
+      role: "CEO",
+      image: "https://media.licdn.com/dms/image/v2/D5603AQF-yukeWP667w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1684256373104?e=1743033600&v=beta&t=QdoLjYGHyr7Iyj7OlL0CMZvHj_rCC-P1XDvObnYsYeg",
+      social: {
+        linkedin: "#"
+      }
+    },
+    {
+      name: "Ivan Ong",
+      role: "COO",
+      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac",
       social: {
         linkedin: "#"
       }
     },
     {
       name: "Lim En Cheng",
-      role: "Co-founder",
+      role: "Marketing Director",
       image: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31",
       social: {
         linkedin: "#"
@@ -22,20 +30,13 @@ export function TeamSection() {
     },
     {
       name: "Taha Basrai",
-      role: "Team Member",
+      role: "Sustainability Director",
       image: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
       social: {
         linkedin: "#"
       }
     },
-    {
-      name: "Ivan Ong",
-      role: "Team Member",
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac",
-      social: {
-        linkedin: "#"
-      }
-    }
+    
   ];
 
   return (
