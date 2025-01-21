@@ -28,7 +28,8 @@ export function AwardsSection() {
       organization: "Featured Speaker",
       year: "2024",
       images: [
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731563170286.jpeg",
+        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731563170286.jpeg"
+      ]
     },
     {
       icon: <Star className="h-12 w-12 text-primary" />,
