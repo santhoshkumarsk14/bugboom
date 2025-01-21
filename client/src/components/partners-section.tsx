@@ -46,13 +46,14 @@ export function PartnersSection() {
         </motion.div>
 
         <div className="relative overflow-hidden">
-          <div className="flex animate-scroll">
-            {[...partners, ...partners].map((partner, index) => (
+          <div className="flex animate-scroll hover:pause">
+            {[...partners, ...partners, ...partners].map((partner, index) => (
               <div key={index} className="flex-shrink-0 w-[200px] mx-8">
                 <img
                   src={partner.logo}
                   alt={partner.name}
                   className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
+                  draggable="false"
                 />
               </div>
             ))}
