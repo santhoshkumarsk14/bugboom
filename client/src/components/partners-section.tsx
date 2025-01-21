@@ -50,12 +50,14 @@ export function PartnersSection() {
           <div className="animate-scroll inline-flex gap-8">
             {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
               <div key={index} className="flex-none w-[200px]">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
-                  draggable="false"
-                />
+                <div className="aspect-[3/2] relative">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="absolute inset-0 w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    draggable="false"
+                  />
+                </div>
               </div>
             ))}
           </div>
