@@ -17,10 +17,10 @@ export function AwardsSection() {
       organization: "Runner-up",
       year: "2024",
       images: [
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award1-1.jpg",
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award1-2.jpg",
+        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731560506158.jpeg",
+        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731560511064.jpeg",
         "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award1-3.jpg",
-      ]
+      ],
     },
     {
       icon: <Award className="h-12 w-12 text-primary" />,
@@ -28,9 +28,7 @@ export function AwardsSection() {
       organization: "Featured Speaker",
       year: "2024",
       images: [
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award2-1.jpg",
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award2-2.jpg",
-      ]
+        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731563170286.jpeg",
     },
     {
       icon: <Star className="h-12 w-12 text-primary" />,
@@ -38,11 +36,10 @@ export function AwardsSection() {
       organization: "Guest Speaker",
       year: "2024",
       images: [
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award3-1.jpg",
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award3-2.jpg",
-        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/award3-3.jpg",
-      ]
-    }
+        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731563011087.jpeg",
+        "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/awards/1731563011610.jpeg",
+      ],
+    },
   ];
 
   return (
@@ -55,10 +52,12 @@ export function AwardsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Recognition & Awards</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Recognition & Awards
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our commitment to sustainability and innovation has been recognized by leading
-            industry organizations.
+            Our commitment to sustainability and innovation has been recognized
+            by leading industry organizations.
           </p>
         </motion.div>
 
@@ -98,9 +97,15 @@ export function AwardsSection() {
                   </Carousel>
                   <div className="text-center">
                     <div className="mb-4 flex justify-center">{award.icon}</div>
-                    <h3 className="text-xl font-semibold mb-2">{award.title}</h3>
-                    <p className="text-muted-foreground mb-1">{award.organization}</p>
-                    <p className="text-sm text-muted-foreground">{award.year}</p>
+                    <h3 className="text-xl font-semibold mb-2">
+                      {award.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-1">
+                      {award.organization}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {award.year}
+                    </p>
                   </div>
                 </CardContent>
               </Card>

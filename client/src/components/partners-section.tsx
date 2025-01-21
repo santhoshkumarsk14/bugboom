@@ -4,15 +4,15 @@ export function PartnersSection() {
   const partners = [
     {
       name: "Vidacity",
-      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner1.png",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner%20logos/vidacity-logo.png",
     },
     {
       name: "City Sprouts",
-      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner2.png",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner%20logos/Brandmark_170x%402x.svg",
     },
     {
       name: "NTU Entrepreneurship Academy",
-      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner3.png",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner%20logos/Nanyang_Technological_University-Logo.wine.png",
     },
     {
       name: "Revital",
@@ -20,10 +20,11 @@ export function PartnersSection() {
     },
     {
       name: "Nutrition Technologies",
-      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner4.png",
-    },    {
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner%20logos/03.avif",
+    },
+    {
       name: "IDSG",
-      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner4.png",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner%20logos/9ed2aa_61786ca7cabf4d989c3bda15948187fa~mv2_d_2953_2953_s_4_2%20(1).avif",
     },
   ];
 
@@ -39,18 +40,15 @@ export function PartnersSection() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Partners</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Working together with industry leaders to create sustainable solutions
-            for a better tomorrow.
+            Working together with industry leaders to create sustainable
+            solutions for a better tomorrow.
           </p>
         </motion.div>
 
         <div className="relative overflow-hidden">
           <div className="flex animate-scroll">
             {[...partners, ...partners].map((partner, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[200px] mx-8"
-              >
+              <div key={index} className="flex-shrink-0 w-[200px] mx-8">
                 <img
                   src={partner.logo}
                   alt={partner.name}
