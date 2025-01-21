@@ -16,7 +16,10 @@ export function NavHeader() {
   return (
     <header className="fixed w-full bg-background/95 backdrop-blur z-50 border-b">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="/" className="text-2xl font-bold text-primary">EcoTech</a>
+        <a href="/" className="flex items-center gap-2">
+          <img src="/src/images/logo.png" alt="Bugboom Logo" className="h-8 w-auto" />
+          <span className="text-2xl font-bold text-primary">Bugboom</span>
+        </a>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">

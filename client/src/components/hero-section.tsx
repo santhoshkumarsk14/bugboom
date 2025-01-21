@@ -36,8 +36,8 @@ export function HeroSection() {
             className="relative aspect-square"
           >
             <img
-              src="https://images.unsplash.com/photo-1589898424451-21e24dcb143c"
-              alt="Sustainable Technology"
+              src="/src/images/hero.png"
+              alt="Bugboom Technology"
               className="rounded-lg object-cover w-full h-full"
             />
           </motion.div>

@@ -12,19 +12,19 @@ export function PartnersSection() {
   const partners = [
     {
       name: "Green Solutions Inc",
-      logo: "https://images.unsplash.com/photo-1507679799987-c73779587ccf",
+      logo: "/src/images/partners/partner1.png",
     },
     {
       name: "EcoInnovate",
-      logo: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
+      logo: "/src/images/partners/partner2.png",
     },
     {
       name: "Sustainable Future",
-      logo: "https://images.unsplash.com/photo-1589898424451-21e24dcb143c",
+      logo: "/src/images/partners/partner3.png",
     },
     {
       name: "BioTech Partners",
-      logo: "https://images.unsplash.com/photo-1689514930640-123c5f55ed09",
+      logo: "/src/images/partners/partner4.png",
     },
   ];
 
