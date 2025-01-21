@@ -13,11 +13,11 @@ export function HeroSection() {
           >
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
               Transforming Food Waste Into
-              <span className="text-primary"> Sustainable Protein</span>
+              <span className="text-primary"> Sustainable Solutions</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl">
-              Our innovative vermi composting technology converts organic waste into high-quality protein,
-              creating a circular economy solution for a sustainable future.
+              BugBoom leverages Black Soldier Fly technology to convert food waste into high-quality farm products, 
+              creating sustainable solutions for Singapore's circular economy.
             </p>
             <div className="flex gap-4">
               <Button size="lg" asChild>

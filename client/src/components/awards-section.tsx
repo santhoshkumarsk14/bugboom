@@ -6,21 +6,21 @@ export function AwardsSection() {
   const awards = [
     {
       icon: <Trophy className="h-12 w-12 text-primary" />,
-      title: "Sustainability Excellence",
-      organization: "Global Green Tech Awards",
-      year: "2023"
+      title: "Kumar Sustainability & Innovation Prize",
+      organization: "Runner-up",
+      year: "2024"
     },
     {
       icon: <Award className="h-12 w-12 text-primary" />,
-      title: "Innovation in Waste Management",
-      organization: "EcoTech Summit",
-      year: "2023"
+      title: "ASEAN Circular Economy Forum",
+      organization: "Featured Speaker",
+      year: "2024"
     },
     {
       icon: <Star className="h-12 w-12 text-primary" />,
-      title: "Environmental Impact",
-      organization: "Sustainable Business Awards",
-      year: "2022"
+      title: "NTU Entrepreneurship Academy",
+      organization: "Guest Speaker",
+      year: "2024"
     }
   ];
 

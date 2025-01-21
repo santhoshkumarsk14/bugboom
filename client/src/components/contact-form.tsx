@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { FC } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -21,7 +22,7 @@ const formSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
-export function ContactForm() {
+export const ContactForm: FC = () => {
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,8 +54,8 @@ export function ContactForm() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Interested in our sustainable solutions? Contact us to learn more about
-            how we can work together.
+            Located at 3a Pasir Ris Drive 6, Singapore 519422. Contact us to learn more about
+            our sustainable solutions and partnership opportunities.
           </p>
         </motion.div>
 
@@ -119,4 +120,4 @@ export function ContactForm() {
       </div>
     </section>
   );
-}
+};

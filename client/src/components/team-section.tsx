@@ -5,43 +5,35 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 export function TeamSection() {
   const team = [
     {
-      name: "Sarah Johnson",
-      role: "CEO & Co-founder",
+      name: "Vasanth Sreeram",
+      role: "Founder",
       image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "#"
       }
     },
     {
-      name: "Michael Chen",
-      role: "CTO",
+      name: "Lim En Cheng",
+      role: "Co-founder",
       image: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "#"
       }
     },
     {
-      name: "Emily Rodriguez",
-      role: "Head of Research",
+      name: "Taha Basrai",
+      role: "Team Member",
       image: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "#"
       }
     },
     {
-      name: "David Kim",
-      role: "Lead Engineer",
+      name: "Ivan Ong",
+      role: "Team Member",
       image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "#"
       }
     }
   ];
@@ -87,12 +79,6 @@ export function TeamSection() {
                     <div className="flex gap-4">
                       <a href={member.social.linkedin} className="text-muted-foreground hover:text-primary">
                         <Linkedin className="h-5 w-5" />
-                      </a>
-                      <a href={member.social.twitter} className="text-muted-foreground hover:text-primary">
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                      <a href={member.social.github} className="text-muted-foreground hover:text-primary">
-                        <Github className="h-5 w-5" />
                       </a>
                     </div>
                   </div>

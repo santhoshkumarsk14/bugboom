@@ -6,18 +6,18 @@ export function AboutSection() {
   const features = [
     {
       icon: <Leaf className="h-8 w-8 text-primary" />,
-      title: "Eco-Friendly Process",
-      description: "Our vermi composting technology naturally transforms waste without harmful chemicals."
+      title: "Sustainable Innovation",
+      description: "Pioneering Black Soldier Fly (BSF) technology to transform food waste into valuable resources."
     },
     {
       icon: <Recycle className="h-8 w-8 text-primary" />,
       title: "Circular Economy",
-      description: "Creating a closed-loop system that converts waste into valuable resources."
+      description: "Converting regional food waste into high-quality, sustainable farm products and fertilizer."
     },
     {
       icon: <Sprout className="h-8 w-8 text-primary" />,
-      title: "Sustainable Future",
-      description: "Reducing carbon footprint while producing high-quality protein sources."
+      title: "Community Impact",
+      description: "Collaborating with local farmers and stakeholders to create a more sustainable Singapore."
     }
   ];
 
