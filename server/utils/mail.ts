@@ -15,7 +15,7 @@ interface EmailParams {
 export async function sendContactEmail(params: EmailParams): Promise<boolean> {
   try {
     await client.sendEmail({
-      From: "tech@sreeramvasanth.com",
+      From: "contact@sreeramvasanth.com",
       To: "tech@sreeramvasanth.com",
       Subject: `New Contact Form Submission from ${params.name}`,
       HtmlBody: `
@@ -31,11 +31,11 @@ export async function sendContactEmail(params: EmailParams): Promise<boolean> {
         Email: ${params.email}
         Message: ${params.message}
       `,
-      MessageStream: "outbound",
+      MessageStream: "outbound"
     });
     return true;
   } catch (error) {
-    console.error("Postmark email error:", error);
+    console.error('Postmark email error:', error);
     return false;
   }
 }

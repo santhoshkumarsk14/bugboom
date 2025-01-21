@@ -7,6 +7,9 @@ export function NavHeader() {
 
   const navItems = [
     { label: "About", href: "#about" },
+    { label: "Partners", href: "#partners" },
+    { label: "Awards", href: "#awards" },
+    { label: "Team", href: "#team" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -17,7 +20,7 @@ export function NavHeader() {
           <img src="https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/bugboomlogo.png" alt="Bugboom Logo" className="h-8 w-auto" />
           <span className="text-2xl font-bold text-primary">Bugboom</span>
         </a>
-
+        
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
