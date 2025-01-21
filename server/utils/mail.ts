@@ -16,7 +16,7 @@ export async function sendContactEmail(params: EmailParams): Promise<boolean> {
   try {
     await client.sendEmail({
       From: "contact@bugboom.com",
-      To: "bugboombiz@gmail.com",
+      To: "tech@sreeramvasanth.com",
       Subject: `New Contact Form Submission from ${params.name}`,
       HtmlBody: `
         <h2>New Contact Form Submission</h2>
