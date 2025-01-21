@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 export function PartnersSection() {
@@ -46,9 +47,9 @@ export function PartnersSection() {
         </motion.div>
 
         <div className="relative overflow-hidden">
-          <div className="flex animate-scroll hover:pause">
-            {[...partners, ...partners, ...partners].map((partner, index) => (
-              <div key={index} className="flex-shrink-0 w-[200px] mx-8">
+          <div className="animate-scroll inline-flex gap-8">
+            {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
+              <div key={index} className="flex-none w-[200px]">
                 <img
                   src={partner.logo}
                   alt={partner.name}
