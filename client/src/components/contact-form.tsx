@@ -1,73 +1,16 @@
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, ValidationError } from '@formspree/react';
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import * as z from "zod";
-import { FC } from "react";
 
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
+export const ContactForm = () => {
+  const [state, handleSubmit] = useForm("mqaezwdk");
 
-export const ContactForm: FC = () => {
-  const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  });
-
-  const mutation = useMutation({
-    mutationFn: async (values: z.infer<typeof formSchema>) => {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-      form.reset();
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    mutation.mutate(values);
+  if (state.succeeded) {
+    return (
+      <div className="text-center p-8">
+        <h3 className="text-2xl font-semibold">Thank you for your message!</h3>
+        <p className="text-muted-foreground mt-2">We'll get back to you soon.</p>
+      </div>
+    );
   }
 
   return (
@@ -94,60 +37,53 @@ export const ContactForm: FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-md mx-auto"
         >
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">
+                Name
+              </label>
+              <input
+                id="name"
+                type="text"
                 name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                className="w-full p-2 border rounded-md"
+                required
               />
-              <FormField
-                control={form.control}
+              <ValidationError prefix="Name" field="name" errors={state.errors} />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
                 name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="your@email.com" type="email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                className="w-full p-2 border rounded-md"
+                required
               />
-              <FormField
-                control={form.control}
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
                 name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Your message"
-                        className="min-h-[120px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                className="w-full p-2 border rounded-md min-h-[120px]"
+                required
               />
-              <Button 
-                type="submit" 
-                className="w-full"
-                disabled={mutation.isPending}
-              >
-                {mutation.isPending ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </Form>
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
+            </div>
+            <button
+              type="submit"
+              disabled={state.submitting}
+              className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+            >
+              {state.submitting ? "Sending..." : "Send Message"}
+            </button>
+          </form>
         </motion.div>
       </div>
     </section>
