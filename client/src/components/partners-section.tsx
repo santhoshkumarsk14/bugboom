@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 export function PartnersSection() {
@@ -17,7 +16,7 @@ export function PartnersSection() {
     },
     {
       name: "Revital",
-      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner4.png",
+      logo: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/partner%20logos/2025-01-21%2020.51.53.jpg",
     },
     {
       name: "Nutrition Technologies",
@@ -48,18 +47,20 @@ export function PartnersSection() {
 
         <div className="relative overflow-hidden">
           <div className="animate-scroll inline-flex gap-8">
-            {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
-              <div key={index} className="flex-none w-[200px]">
-                <div className="aspect-[3/2] relative">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="absolute inset-0 w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    draggable="false"
-                  />
+            {[...partners, ...partners, ...partners, ...partners].map(
+              (partner, index) => (
+                <div key={index} className="flex-none w-[200px]">
+                  <div className="aspect-[3/2] relative">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="absolute inset-0 w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                      draggable="false"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </div>
       </div>
