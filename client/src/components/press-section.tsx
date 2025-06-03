@@ -57,7 +57,7 @@ export function PressSection() {
                           className="object-cover w-full h-full"
                           onError={(e: any) => {
                             // Fallback to a placeholder if image fails to load
-                            e.currentTarget.src = "https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=600&h=400&fit=crop&crop=center";
+                            e.currentTarget.src = "https://cassette.sphdigital.com.sg/image/zaobao/6408d02b04cf782d689bfb0d0fc24cc6a17c98fbb1d105f6a0c9b42be166eefd?o=zbimg&oloc=se";
                           }}
                         />
                       </div>
