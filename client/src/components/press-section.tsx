@@ -60,6 +60,14 @@ export function PressSection() {
                             e.currentTarget.src = "https://cassette.sphdigital.com.sg/image/zaobao/6408d02b04cf782d689bfb0d0fc24cc6a17c98fbb1d105f6a0c9b42be166eefd?o=zbimg&oloc=se";
                           }}
                         />
+                        {/* Zaobao Logo Overlay */}
+                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+                          <img
+                            src="https://www.zaobao.com.sg/assets/PrimaryLogo-Rp6Tta8r.svg"
+                            alt="Zaobao Logo"
+                            className="h-6 w-auto"
+                          />
+                        </div>
                       </div>
                     </div>
 
