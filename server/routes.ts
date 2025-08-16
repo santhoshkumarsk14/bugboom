@@ -1,34 +1,33 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { sendContactEmail } from "./utils/mail";
+import { getAllBlogPosts, getBlogPost } from "./blog";
 
 export function registerRoutes(app: Express): Server {
-  // Contact form submission endpoint
-  app.post('/api/contact', async (req, res) => {
-    const { name, email, message } = req.body;
 
+  // Blog API endpoints
+  app.get('/api/blog', (req, res) => {
     try {
-      const emailSent = await sendContactEmail({ name, email, message });
-
-      if (!emailSent) {
-        return res.status(500).json({ 
-          success: false, 
-          message: 'Failed to send email notification. Please try again.' 
-        });
-      }
-
-      // Log the submission and return success
-      console.log('Contact Form Submission:', { name, email, message });
-      res.json({ 
-        success: true, 
-        message: 'Thank you for your message. We will get back to you soon.' 
-      });
+      const posts = getAllBlogPosts();
+      res.json(posts);
     } catch (error) {
-      console.error('Contact form error:', error);
-      res.status(500).json({ 
-        success: false, 
-        message: 'An error occurred while processing your request.' 
-      });
+      console.error('Error fetching blog posts:', error);
+      res.status(500).json({ error: 'Failed to fetch blog posts' });
+    }
+  });
+
+  app.get('/api/blog/:slug', (req, res) => {
+    try {
+      const { slug } = req.params;
+      const post = getBlogPost(slug);
+      
+      if (!post) {
+        return res.status(404).json({ error: 'Blog post not found' });
+      }
+      
+      res.json(post);
+    } catch (error) {
+      console.error('Error fetching blog post:', error);
+      res.status(500).json({ error: 'Failed to fetch blog post' });
     }
   });
 

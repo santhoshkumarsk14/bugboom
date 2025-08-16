@@ -10,6 +10,7 @@ export function NavHeader() {
     { label: "Partners", href: "#partners" },
     { label: "Awards", href: "#awards" },
     { label: "Team", href: "#team" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contact" },
   ];
 
