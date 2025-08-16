@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { NavHeader } from "@/components/nav-header";
-import { useQuery } from "@tanstack/react-query";
 import { useState, useMemo } from "react";
 import { Search, Calendar, BookOpen, Tag, Filter, X, Beaker, Building2, Users, Globe, TrendingUp, Lightbulb, Settings, Award, Target } from "lucide-react";
 import { motion } from "framer-motion";
@@ -44,10 +43,8 @@ export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   
-  const { data: posts = [], isLoading, error } = useQuery({
-    queryKey: ['blog-posts'],
-    queryFn: getAllBlogPosts,
-  });
+  // Get posts directly since they're now imported as modules
+  const posts = getAllBlogPosts();
 
   // Get all unique tags
   const allTags = useMemo(() => {
@@ -72,27 +69,6 @@ export default function Blog() {
     });
   }, [posts, searchQuery, selectedTag]);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600">Loading blog posts...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Error loading blog posts</h1>
-          <p className="text-gray-600">Please try again later</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
@@ -105,30 +81,12 @@ export default function Blog() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-6">
             BugBoom Chronicles
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
             Follow our journey in sustainable technology and black soldier fly farming - from startup challenges to global expansion
           </p>
-          
-          {/* Stats Dashboard */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto mb-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border">
-              <div className="flex items-center justify-center mb-2">
-                <BookOpen className="h-6 w-6 text-green-600 mr-2" />
-                <span className="text-3xl font-bold text-gray-900">{posts.length}</span>
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Total Articles</p>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-sm border">
-              <div className="flex items-center justify-center mb-2">
-                <Tag className="h-6 w-6 text-blue-600 mr-2" />
-                <span className="text-3xl font-bold text-gray-900">{allTags.length}</span>
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Topics Covered</p>
-            </div>
-          </div>
         </motion.div>
 
         {/* Search and Filter Section */}

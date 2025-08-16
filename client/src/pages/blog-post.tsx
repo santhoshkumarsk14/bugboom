@@ -6,23 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { NavHeader } from "@/components/nav-header";
 import { ArrowLeft, Calendar, User, Clock, Share2, BookOpen } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 
 export default function BlogPost() {
   const [match, params] = useRoute("/blog/:slug");
   
-  const { data: post, isLoading, error } = useQuery({
-    queryKey: ['blog-post', params?.slug],
-    queryFn: () => params?.slug ? getBlogPost(params.slug) : Promise.resolve(undefined),
-    enabled: !!params?.slug,
-  });
-
-  const { data: allPosts = [] } = useQuery({
-    queryKey: ['blog-posts'],
-    queryFn: getAllBlogPosts,
-  });
+  // Get posts directly since they're now imported as modules
+  const post = params?.slug ? getBlogPost(params.slug) : undefined;
+  const allPosts = getAllBlogPosts();
 
   // Get related posts based on shared tags
   const relatedPosts = useMemo(() => {
@@ -68,21 +60,7 @@ export default function BlogPost() {
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-        <NavHeader />
-        <div className="flex items-center justify-center min-h-[80vh]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600">Loading blog post...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !post) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
         <NavHeader />

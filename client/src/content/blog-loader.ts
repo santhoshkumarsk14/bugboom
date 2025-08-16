@@ -1,6 +1,15 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+// Import all blog markdown files
+import BoomKitsContent from './blogs/BoomKits_The_Future_of_Household_BSF_Farming.md?raw';
+import Chapter10Content from './blogs/Chapter_10_Current_Status_and_Future_Vision.md?raw';
+import Chapter1Content from './blogs/Chapter_1_The_Foundation_KSIP_Victory_and_Early_Milestones.md?raw';
+import Chapter2Content from './blogs/Chapter_2_Technical_Trials_TOGO_Equipment_and_BSF_Innovation.md?raw';
+import Chapter3Content from './blogs/Chapter_3_Regulatory_Reality_Check_Navigating_the_Bureaucratic_Maze.md?raw';
+import Chapter9Content from './blogs/Chapter_9_Financial_Milestones_and_Sustainability_Building_a_Business.md?raw';
+import FacilityChallengesContent from './blogs/Facility_Challenges_and_Solutions_Vidacity_Experience.md?raw';
+import MBSExhibitionContent from './blogs/MBS_Live_It_Up_Exhibition_Success_Story.md?raw';
+import MiddleEastContent from './blogs/Middle_East_Expansion_Research_and_Strategy.md?raw';
+import EducationalWorkshopsContent from './blogs/Scaling_Educational_Workshops_Singapore_Schools.md?raw';
+import BugBoomChroniclesContent from './blogs/The_BugBoom_Chronicles_From_Larvae_to_Legacy.md?raw';
 
 export interface BlogPost {
   slug: string;
@@ -10,10 +19,7 @@ export interface BlogPost {
   date?: string;
   author?: string;
   tags?: string[];
-  rawContent: string;
 }
-
-const BLOGS_DIR = path.join(process.cwd(), 'blogs');
 
 function extractMetadataFromContent(content: string) {
   const lines = content.split('\n');
@@ -34,7 +40,7 @@ function extractMetadataFromContent(content: string) {
     if (line.startsWith('*Meta Description:')) {
       description = line.replace('*Meta Description:', '').replace('*', '').trim();
       break;
-    } else if (line.startsWith('**') && line.includes('look at') || line.includes('discover') || line.includes('follow')) {
+    } else if (line.startsWith('**') && (line.includes('look at') || line.includes('discover') || line.includes('follow'))) {
       description = line.replace(/^\*\*/, '').replace(/\*\*$/, '').trim();
       break;
     }
@@ -103,35 +109,36 @@ function extractDateFromContent(content: string, filename: string): string {
   return '2025-08-01'; // Default date
 }
 
-export function getAllBlogPosts(): BlogPost[] {
-  if (!fs.existsSync(BLOGS_DIR)) {
-    console.warn('Blogs directory not found:', BLOGS_DIR);
-    return [];
-  }
+// Blog post data with imported content
+const blogData = [
+  { filename: 'BoomKits_The_Future_of_Household_BSF_Farming.md', content: BoomKitsContent },
+  { filename: 'Chapter_10_Current_Status_and_Future_Vision.md', content: Chapter10Content },
+  { filename: 'Chapter_1_The_Foundation_KSIP_Victory_and_Early_Milestones.md', content: Chapter1Content },
+  { filename: 'Chapter_2_Technical_Trials_TOGO_Equipment_and_BSF_Innovation.md', content: Chapter2Content },
+  { filename: 'Chapter_3_Regulatory_Reality_Check_Navigating_the_Bureaucratic_Maze.md', content: Chapter3Content },
+  { filename: 'Chapter_9_Financial_Milestones_and_Sustainability_Building_a_Business.md', content: Chapter9Content },
+  { filename: 'Facility_Challenges_and_Solutions_Vidacity_Experience.md', content: FacilityChallengesContent },
+  { filename: 'MBS_Live_It_Up_Exhibition_Success_Story.md', content: MBSExhibitionContent },
+  { filename: 'Middle_East_Expansion_Research_and_Strategy.md', content: MiddleEastContent },
+  { filename: 'Scaling_Educational_Workshops_Singapore_Schools.md', content: EducationalWorkshopsContent },
+  { filename: 'The_BugBoom_Chronicles_From_Larvae_to_Legacy.md', content: BugBoomChroniclesContent },
+];
 
-  const files = fs.readdirSync(BLOGS_DIR).filter(file => file.endsWith('.md'));
-  
-  const posts = files.map(file => {
-    const filePath = path.join(BLOGS_DIR, file);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    
-    // Try to parse frontmatter, but handle files without it
-    const { data, content } = matter(fileContent);
-    
+export const getAllBlogPosts = (): BlogPost[] => {
+  const posts = blogData.map(({ filename, content }) => {
     const { title, description } = extractMetadataFromContent(content);
-    const slug = createSlugFromFilename(file);
+    const slug = createSlugFromFilename(filename);
     const tags = extractTagsFromContent(content);
-    const date = data.date || extractDateFromContent(content, file);
+    const date = extractDateFromContent(content, filename);
     
     return {
       slug,
-      title: data.title || title,
-      description: data.description || description,
+      title,
+      description,
       content,
       date,
-      author: data.author || 'BugBoom Team',
-      tags: data.tags || tags,
-      rawContent: fileContent
+      author: 'BugBoom Team',
+      tags,
     };
   });
 
@@ -140,9 +147,9 @@ export function getAllBlogPosts(): BlogPost[] {
     if (!a.date || !b.date) return 0;
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-}
+};
 
-export function getBlogPost(slug: string): BlogPost | undefined {
+export const getBlogPost = (slug: string): BlogPost | undefined => {
   const posts = getAllBlogPosts();
   return posts.find(post => post.slug === slug);
-}
+};
