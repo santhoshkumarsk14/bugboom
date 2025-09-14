@@ -6,7 +6,7 @@ export function TeamSection() {
   const team = [
     {
       name: "Vasanth Sreeram",
-      role: "CEO",
+      role: "Bio-process automation engineer",
       image: "https://pub-5658b1b4fb264ccab4a41995fb83981b.r2.dev/IMG_3574.PNG",
       social: {
         linkedin: "https://www.linkedin.com/in/vasanthsreeram/",
